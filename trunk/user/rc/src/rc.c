@@ -651,6 +651,12 @@ LED_CONTROL(int gpio_led, int flag)
 		flag = LED_OFF;
 
 	logmessage(LOGNAME, "LED_CONTROL: %s=%d", led_to_name(gpio_led), flag);
+#if defined(BOARD_K2P)
+	if (gpio_led == LED_WAN) {
+		gpio_led_set(LED_PWR, flag ? LED_OFF : LED_ON);
+		gpio_led_set(LED_WIFI, flag ? LED_OFF : LED_ON);
+	}
+#endif
 	gpio_led_set(gpio_led, flag);
 }
 
