@@ -29,5 +29,6 @@ $(PRODUCTS):
 	cp -f $(TEMPLATE_DIR)/$(@).config $(CONFIG)
 	@echo "CONFIG_CROSS_COMPILER_ROOT=$(TOPDIR)/toolchain/toolchain-mipsel" >> $(CONFIG)
 	@echo "CONFIG_TOOLCHAIN=$(TOOLCHAIN)" >> $(CONFIG)
+	@echo "CONFIG_USE_GC_SECTIONS=y" >> $(CONFIG)
 	@echo "CONFIG_CCACHE=y" >> $(CONFIG)
 	@make build
